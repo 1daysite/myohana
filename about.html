@@ -1,12 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>关于我</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻牌效果 · 服务卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* 卡片容器：响应式网格 */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* 单个卡片容器：设置3D透视 */
+        .card {
+            background-color: transparent;
+            width: 260px;
+            height: 320px;
+            perspective: 1200px;
+            cursor: pointer;
+        }
+
+        /* 翻转内层：保留3D变换空间 */
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            border-radius: 28px;
+        }
+
+        /* 翻转状态：沿Y轴旋转180度 */
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* 正面 & 背面 通用样式 */
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 16px;
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.4);
+            transition: all 0.2s;
+        }
+
+        /* 正面样式：渐变 + 玻璃质感 */
+        .card-front {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        /* 背面样式：深色质感 */
+        .card-back {
+            background: linear-gradient(135deg, #0f212e 0%, #0a1a24 100%);
+            color: #f1f5f9;
+            transform: rotateY(180deg);
+            border: 1px solid rgba(71, 128, 181, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 20px 30px -12px black;
+        }
+
+        /* 正面标题 */
+        .card-front h3 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(120deg, #1e293b, #2d3a4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-size: 42px;
+            font-weight: 800;
+            color: #0f2b3d;
+            margin: 16px 0 12px;
+            letter-spacing: -1px;
+        }
+
+        .price small {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+            background: #eef2ff;
+            padding: 6px 14px;
+            border-radius: 60px;
+            margin-top: 12px;
+        }
+
+        /* 背面文案 */
+        .card-back h4 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(120deg, #FFD966, #FFB347);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .card-back p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 28px;
+            opacity: 0.9;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(4px);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(255,215,0,0.4);
+        }
+
+        /* 悬浮微动效 */
+        .card:hover .card-front {
+            box-shadow: 0 30px 45px -12px rgba(0,0,0,0.5);
+            transform: scale(1.01);
+        }
+
+        .card {
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        /* 小屏幕适配 */
+        @media (max-width: 700px) {
+            .card {
+                width: 240px;
+                height: 300px;
+            }
+            .price {
+                font-size: 36px;
+            }
+        }
+
+        /* 页脚提示 */
+        .info-note {
+            text-align: center;
+            margin-top: 50px;
+            color: #94a3b8;
+            font-size: 14px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>关于我</h1>
-    <p>这里写你的介绍内容。</p>
-    <a href="index.html">← 返回首页</a>
+
+<div style="width: 100%;">
+    <div class="cards-grid">
+        <!-- 卡片1：官网搭建 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>🚀 搭建官网</h3>
+                    <div class="price">299<span style="font-size: 20px;">R</span></div>
+                    <div class="tagline">当天制作 · 当天上线</div>
+                </div>
+                <div class="card-back">
+                    <h4>官网极速上线</h4>
+                    <p>企业/个人品牌官网，<br>一对一设计，当日交付</p>
+                    <div class="badge">⭐ 含移动端适配</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 卡片2：.com 域名 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>🌐 包 .com 域名</h3>
+                    <div class="price">0<span style="font-size: 20px;"> 额外费</span></div>
+                    <div class="tagline">.com .net .cn 等任选</div>
+                </div>
+                <div class="card-back">
+                    <h4>品牌域名</h4>
+                    <p>免费赠送优质域名，<br>首年管理全包</p>
+                    <div class="badge">🎯 主流后缀任选</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 卡片3：服务器 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>⚡ 包服务器</h3>
+                    <div class="price">永久<span style="font-size: 20px;"> 无续费</span></div>
+                    <div class="tagline">全球加速 · 无需续费</div>
+                </div>
+                <div class="card-back">
+                    <h4>企业级云服务器</h4>
+                    <p>CDN 全球加速 + 高性能主机，<br>无额外年费</p>
+                    <div class="badge">🌍 多节点覆盖</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 卡片4：HTML制作 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>📄 包 html 制作</h3>
+                    <div class="price">全包<span style="font-size: 20px;"> 设计</span></div>
+                    <div class="tagline">含主页等页面排版</div>
+                </div>
+                <div class="card-back">
+                    <h4>纯手工页面</h4>
+                    <p>定制设计 + 响应式布局，<br>交互效果、品牌呈现</p>
+                    <div class="badge">🎨 长期微调支持</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-note">
+        💡 点击任意卡片 — 正面/背面 3D 翻牌效果
+    </div>
+</div>
+
+     <a href="index.html">← 返回首页</a>
 </body>
 </html>
