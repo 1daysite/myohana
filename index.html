@@ -2,10 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>小人家官网 - 全新视界 探索无限</title>
-    <!-- 使用与mc.163.com相似的风格，纯CSS仿制，无外部依赖 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deepfeel studio · 开发博客与更新</title>
     <style>
+        /* 全局重置与基础 —— 极简风格，仿 ludeon.com/blog/ */
         * {
             margin: 0;
             padding: 0;
@@ -13,501 +13,812 @@
         }
 
         body {
-            font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
-            background-color: #0b0e11;
-            color: #fff;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 20px 0 60px;
         }
 
-        /* 主容器，模仿mc.163.com的宽屏感 */
         .container {
-            max-width: 1200px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+            background: #ffffff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border-radius: 4px;
         }
 
-        /* 顶部导航 */
-        .header {
-            padding: 20px 0 10px;
-            border-bottom: 1px solid #2a2f35;
+        /* 页头 —— 极简logo + 导航 */
+        .site-header {
+            padding: 40px 0 20px;
+            border-bottom: 1px solid #eaeef2;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
+            align-items: baseline;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .site-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #0a0a0a;
         }
-
-        .logo-icon {
-            font-size: 32px;
-            font-weight: 900;
-            color: #f0c040;
-            text-shadow: 0 0 10px rgba(240, 192, 64, 0.3);
-            letter-spacing: 2px;
+        .site-title a {
+            text-decoration: none;
+            color: #0a0a0a;
         }
-
-        .logo-icon span {
-            background: #f0c040;
-            color: #0b0e11;
-            padding: 0 6px;
-            border-radius: 4px;
-            font-size: 20px;
-            margin-left: 4px;
+        .site-title .highlight {
+            color: #d35400;
         }
 
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 15px;
-            color: #b0b8c0;
-        }
-
-        .nav-links a {
-            color: #b0b8c0;
-            text-decoration: none;
-            transition: 0.2s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #f0c040;
-        }
-
-        .btn-download-top {
-            background: #f0c040;
-            color: #0b0e11 !important;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 14px;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-download-top:hover {
-            background: #ffd966;
-            transform: scale(1.02);
-        }
-
-        /* 主视觉 Hero */
-        .hero {
-            padding: 50px 0 40px;
-            text-align: center;
-            background: linear-gradient(180deg, #141a20 0%, #0b0e11 100%);
-            border-bottom: 1px solid #2a2f35;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, #f0c040, #f7d97e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        .hero .sub-title {
-            font-size: 1.6rem;
-            color: #c8d0d8;
-            margin-bottom: 20px;
-            font-weight: 300;
-            letter-spacing: 8px;
-        }
-
-        .hero .tagline {
-            font-size: 1.2rem;
-            color: #8a9aa8;
-            margin-bottom: 30px;
-        }
-
-        .hero .btn-hero {
-            display: inline-block;
-            background: #f0c040;
-            color: #0b0e11;
-            font-weight: 700;
-            padding: 14px 48px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: 0.2s;
-            box-shadow: 0 8px 20px rgba(240, 192, 64, 0.3);
-        }
-
-        .hero .btn-hero:hover {
-            background: #ffd966;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(240, 192, 64, 0.5);
-        }
-
-        /* 通用板块标题 */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-align: center;
-            margin: 50px 0 30px;
-            letter-spacing: 2px;
-            color: #e8edf2;
-        }
-
-        .section-title span {
-            color: #f0c040;
-        }
-
-        /* 卡片网格 */
-        .grid-2col {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .grid-3col {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .grid-4col {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .card {
-            background: #1a2128;
-            border-radius: 16px;
-            padding: 24px 20px;
-            border: 1px solid #2f3842;
-            transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .card:hover {
-            border-color: #f0c040;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: #f0c040;
-        }
-
-        .card p {
-            color: #b0bcc8;
+            gap: 28px;
             font-size: 0.95rem;
         }
-
-        .card .icon {
-            font-size: 2.4rem;
-            margin-bottom: 12px;
-            display: block;
+        .nav-links a {
+            text-decoration: none;
+            color: #3a3a3a;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            transition: 0.15s;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #d35400;
+            color: #000;
         }
 
-        /* 平台切换标签 (仿电脑版|移动版) */
-        .platform-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0 30px;
-            font-size: 1.2rem;
+        /* 主内容 —— 博客文章列表 */
+        .blog-list {
+            padding: 30px 0 20px;
         }
 
-        .platform-tabs .active {
-            color: #f0c040;
-            border-bottom: 3px solid #f0c040;
-            padding-bottom: 6px;
+        /* 单篇文章 */
+        .post-item {
+            margin-bottom: 48px;
+            border-bottom: 1px solid #f0f2f4;
+            padding-bottom: 32px;
+        }
+        .post-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
         }
 
-        .platform-tabs span {
-            cursor: default;
-            color: #8a9aa8;
+        .post-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .post-title a {
+            text-decoration: none;
+            color: #0a0a0a;
+            transition: 0.15s;
+        }
+        .post-title a:hover {
+            color: #d35400;
         }
 
-        /* 特色区块 */
-        .feature-block {
-            background: #11181f;
-            border-radius: 24px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 1px solid #2a323b;
-        }
-
-        .feature-block h2 {
-            color: #f0c040;
+        .post-meta {
+            font-size: 0.9rem;
+            color: #6a7a8a;
             margin-bottom: 16px;
-        }
-
-        .feature-block .flex-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
-            justify-content: space-between;
+            gap: 4px 12px;
+        }
+        .post-meta .author {
+            font-weight: 500;
+            color: #2a3a4a;
         }
 
-        .feature-block .flex-item {
-            flex: 1 1 200px;
+        .post-excerpt {
+            font-size: 1rem;
+            color: #2a2a2a;
+            margin-bottom: 12px;
+        }
+        .post-excerpt p {
+            margin-bottom: 12px;
         }
 
-        /* 游戏模式三连 */
-        .mode-card {
-            background: #141c24;
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px solid #2a333d;
-            text-align: center;
+        .post-excerpt ul, .post-excerpt ol {
+            padding-left: 24px;
+            margin: 12px 0;
+        }
+        .post-excerpt li {
+            margin-bottom: 4px;
         }
 
-        .mode-card .mode-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        .post-excerpt h4 {
+            font-weight: 600;
+            margin: 16px 0 8px;
+            color: #0a0a0a;
         }
 
-        .mode-card h4 {
-            font-size: 1.3rem;
-            color: #f0c040;
+        .post-excerpt .changelog-section {
+            background: #f6f8fa;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin: 16px 0;
+            font-size: 0.95rem;
+            border-left: 3px solid #d35400;
         }
 
-        /* 底部 */
-        .footer {
-            margin-top: 60px;
-            padding: 30px 0;
-            border-top: 1px solid #2a2f35;
-            color: #6a7a88;
-            font-size: 0.85rem;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #8a9aa8;
+        .read-more {
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: 500;
+            color: #d35400;
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: 0.15s;
+        }
+        .read-more:hover {
+            border-bottom-color: #d35400;
         }
 
-        .footer a:hover {
-            color: #f0c040;
+        /* 页脚 */
+        .site-footer {
+            margin-top: 40px;
+            padding: 30px 0 20px;
+            border-top: 1px solid #eaeef2;
+            font-size: 0.85rem;
+            color: #6a7a8a;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-footer a {
+            color: #3a5a7a;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .site-footer a:hover {
+            text-decoration: underline;
+            color: #d35400;
         }
 
         /* 响应式 */
-        @media (max-width: 900px) {
-            .grid-3col { grid-template-columns: repeat(2, 1fr); }
-            .grid-4col { grid-template-columns: repeat(2, 1fr); }
-            .hero h1 { font-size: 2.8rem; }
-        }
-
-        @media (max-width: 600px) {
-            .grid-2col, .grid-3col, .grid-4col { grid-template-columns: 1fr; }
-            .header { flex-direction: column; gap: 15px; }
-            .nav-links { justify-content: center; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero .sub-title { font-size: 1.2rem; letter-spacing: 4px; }
-            .platform-tabs { gap: 15px; font-size: 1rem; }
+        @media (max-width: 640px) {
+            .site-header {
+                flex-direction: column;
+                gap: 12px;
+                padding-top: 24px;
+            }
+            .nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+            .post-title {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 0 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 头部 -->
-        <header class="header">
-            <div class="logo-area">
-                <div class="logo-icon">⛏️ 小人家 <span>·</span></div>
-                <div style="color:#8a9aa8; font-size:14px; margin-left:6px;">全新视界</div>
-            </div>
-            <div class="nav-links">
-                <a href="#">游戏特色</a>
-                <a href="#">模组中心</a>
-                <a href="#">联机玩法</a>
-                <a href="#">家长关爱</a>
-                <a href="#" class="btn-download-top">立即下载</a>
-            </div>
-        </header>
-
-        <!-- Hero 主视觉 -->
-        <section class="hero">
-            <h1>创造.探索.生存.</h1>
-            <div class="sub-title">小人家 · 无限世界</div>
-            <div class="tagline">在方块世界中，建造属于你的小人家园</div>
-            <a href="#" class="btn-hero">立即下载 · 免费畅玩</a>
-            <div style="margin-top: 30px; font-size: 0.9rem; color: #6a7a88;">
-                电脑版 | 移动版 · 跨平台联机
-            </div>
-        </section>
-
-        <!-- 平台兼容 -->
-        <div class="platform-tabs">
-            <span class="active">电脑版</span>
-            <span>移动版</span>
-            <span>跨平台兼容</span>
+<div class="container">
+    <!-- 页头：deepfeel studio -->
+    <header class="site-header">
+        <div class="site-title">
+            <a href="#"><span class="highlight">deepfeel</span> studio</a>
         </div>
+        <nav class="nav-links">
+            <a href="#">博客</a>
+            <a href="#">游戏</a>
+            <a href="#">关于</a>
+            <a href="#">支持</a>
+        </nav>
+    </header>
 
-        <!-- 跨平台描述卡片 -->
-        <div class="grid-2col">
-            <div class="card">
-                <span class="icon">🖥️</span>
-                <h3>跨平台兼容性</h3>
-                <p>你可以与使用不同设备的朋友一起游玩。使用 Windows 平台，与移动设备无缝联机，共享跨平台游玩的乐趣。</p>
-            </div>
-            <div class="card">
-                <span class="icon">📱</span>
-                <h3>移动端畅玩</h3>
-                <p>在移动设备上与 Windows 平台联机，随时随地享受小人家世界的乐趣，好友互动零距离。</p>
-            </div>
-        </div>
+    <!-- 主内容：博客文章列表，完全复制 ludeon.com/blog 内容结构 -->
+    <main class="blog-list">
 
-        <!-- 模组中心 + 畅玩计划 2列 -->
-        <div class="grid-2col">
-            <div class="card">
-                <span class="icon">🧩</span>
-                <h3>模组中心</h3>
-                <p>海量由开发者创作的内容，涵盖地图、模组、皮肤、光影与材质，轻松获取您喜欢的资源，畅享无限精彩体验！</p>
+        <!-- 文章 1: Update 1.6.4850 released -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Update 1.6.4850 released</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted June 8th, 2026 by Tia Young</span>
             </div>
-            <div class="card">
-                <span class="icon">🎮</span>
-                <h3>畅玩计划</h3>
-                <p>每月只需支付少量费用，即可畅玩上百款优质模组，体验社区创作的无限可能。</p>
-            </div>
-        </div>
+            <div class="post-excerpt">
+                <p>Hey everyone, we're back with a small update for RimWorld and the expansions today. Check out the changelog below.</p>
+                <p>This update should be compatible with all savegames and mods.</p>
+                <p>Have a bug to report? You can share it with us on the official RimWorld development Discord.</p>
+                <p>Cheers!<br>Tia</p>
 
-        <!-- 网络游戏 + 我的山头 + 联机玩法 3列 -->
-        <div class="grid-3col">
-            <div class="card">
-                <span class="icon">🌐</span>
-                <h3>网络游戏</h3>
-                <p>由开发者创作的大型在线玩法，充满各式各样的游戏类型，与上千名玩家一同游玩。</p>
-            </div>
-            <div class="card">
-                <span class="icon">🏔️</span>
-                <h3>我的山头</h3>
-                <p>专为您和好友打造的专属服务器，可同时容纳最多 40 名玩家在线畅玩。即使您不在线，成员也可以随时游玩。</p>
-            </div>
-            <div class="card">
-                <span class="icon">🎯</span>
-                <h3>联机玩法</h3>
-                <p>海量在线地图玩法，覆盖生存、PVP、跑酷、解谜等多种类型，带来丰富的游戏乐趣。</p>
-            </div>
-        </div>
+                <h4>Changelog</h4>
+                <ul>
+                    <li>Heavy bridges are now immune to explosion damage.</li>
+                    <li>Embryos are now forbiddable.</li>
+                    <li>Added ancient bridges and ancient heavy bridges which have a market value of 0. This prevents large wealth spikes when landing on maps that generate ruins over water.</li>
+                    <li>Updated Royalty preview images.</li>
+                    <li>Updated player creative content.</li>
+                </ul>
 
-        <!-- 成就/奖励 + 局域网联机 + 光线追踪 + 家长关爱 4列 -->
-        <div class="grid-4col">
-            <div class="card">
-                <span class="icon">🏆</span>
-                <h3>成就/奖励</h3>
-                <p>完成特定挑战，即可获得成就或奖励，记录你的冒险足迹。</p>
+                <h4>Fixes</h4>
+                <ul>
+                    <li>Fix: Some ancient danger enemies were active before they were unfogged.</li>
+                    <li>Fix: "Cloudwatching" sometimes appears when in space instead of "stargazing".</li>
+                    <li>Fix: Pawns can infinitely desire a looks-change if their ideoligion and genes clash.</li>
+                    <li>Fix: Deliver resources jobs issue causing pawns to not take any job.</li>
+                    <li>Fix: Error with grow zones in pocket maps.</li>
+                    <li>Fix: Incorrect parameters being used in AncientPodContents.</li>
+                    <li>Fix: Creepjoiner body types.</li>
+                    <li>Fix: Pawns passing friendly and enemy blockers.</li>
+                    <li>Fix: Glower dialog can't be configured not to force a color value.</li>
+                    <li>Fix: Construct cache not respecting forced orders.</li>
+                    <li>Fix: Gravship jumps interrupt deathrest.</li>
+                    <li>Fix: Holding platforms minified by infestations would delete their contents.</li>
+                    <li>Fix: Cultists would get stuck after their ritual was interrupted.</li>
+                    <li>Fix: macOS installations on non-Apple filesystems would try and load the generated ._ prefixed XML files.</li>
+                    <li>Fix: Bloodrage hediff increasing/decreasing too slowly on pawns ticking at a lower rate.</li>
+                    <li>Fix: Cube interest/withdrawal not behaving correctly on pawns ticking at a lower rate.</li>
+                    <li>Fix: Mechanoids repairing too fast when ticking at a lower rate.</li>
+                    <li>Fix: Wastepack atomizer west and east sprites were flipped.</li>
+                    <li>Fix: Butcher yield storyteller setting affecting "make any stone blocks" bill yield.</li>
+                    <li>Fix: Cancelling a wall blueprint that was replacing another wall would delete any wall attachments.</li>
+                    <li>Fix: Volcanic debris lava can no longer spread to deep water.</li>
+                    <li>Fix: Ghouls can no longer go on caravans alone.</li>
+                    <li>Fix: Lodgers that are arrested and released are no longer recruited for free.</li>
+                    <li>Fix: Ghouls now exit shuttles drafted like other colonists.</li>
+                    <li>Fix: Explosions were not destroying regular bridges.</li>
+                    <li>Fix: If your first home map is in space, pawns were occasionally spawning on other maps with vacsuits.</li>
+                    <li>Fix: Gravship takeoff could leave floating roofs on the launch map.</li>
+                    <li>Fix: Incorrect threat reaction radius for enemies defending a location.</li>
+                    <li>Fix: Buildings could remain connected to power nets on the previous map after launch.</li>
+                    <li>Fix: Beam weapons were creating VFX in the wrong location (only affects mods).</li>
+                    <li>Fix: Shuttle crash rescue quest could generate with too few points to generate an enemy threat.</li>
+                    <li>Fix: Possible for rescue shuttles to land on the crashed shuttle, destroying it.</li>
+                    <li>Fix: Unnatural corpses could be permanently destroyed by turning them into nutrient paste.</li>
+                    <li>Fix: Several issues with fleshmass heart and gravship jumps from maps with grav anchors.</li>
+                    <li>Fix: Possible for strange signal quest to fail to find a place for the monolith on particularly full maps.</li>
+                    <li>Fix: Possible for distress signal map to generate without a shard.</li>
+                    <li>Fix: Possible for terminals to fail to spawn in ancient complex quests, instantly failing the quest on arrival.</li>
+                    <li>Fix: Desired styles were calculated incorrectly if Biotech was enabled, causing the styling station to show all styles, and "look change desired" thought to never occur.</li>
+                    <li>Fix: "Inspired recruitment" pawns interacting incorrectly with prisoners with "Reduce will" setting.</li>
+                    <li>Fix: Babies born during shuttle flight were deleted.</li>
+                    <li>Fix: Babies born without a faction would occasionally have their xenotype randomized.</li>
+                    <li>Fix: It was possible to have quest lodgers enter biosculpter pods via the gizmo when it was disabled via float menu.</li>
+                    <li>Fix: Exception when hovering certain buildings near the map edge in god mode.</li>
+                    <li>Fix: Rectangle drag designators displayed the total number of designated cells on screen rather than the actual number of cells in the dragged rectangle.</li>
+                    <li>Fix: Slave terror incorrectly only checked the region that the slave was in.</li>
+                    <li>Fix: Performance issue if the player had no home map, several non-home maps, and no gravship.</li>
+                    <li>Fix: It was possible for pilgrim quests to target a map without a reliquary on it, causing the quest to break.</li>
+                    <li>Fix: Pawns would attempt to remove their vacsuit in space if their policy didn't allow for it.</li>
+                    <li>Fix: EMP rounds on unique weapons weren't breaking low-shields.</li>
+                    <li>Fix: Birds could get stuck in a flying animation if they were transported on a gravship mid-flight.</li>
+                    <li>Fix: Incorrect psilocap graphics.</li>
+                    <li>Fix: Books in containers could have the same text content.</li>
+                    <li>Fix: Having an endogene and an overriding xenogene with the same trait can cause the trait to never be applied at all.</li>
+                    <li>Fix: Archean tree missing snowy overlay.</li>
+                    <li>Fix: Siegers respecting player blueprints.</li>
+                    <li>Fix: Performance issues with lots of unbuildable blueprints.</li>
+                    <li>Fix: Possible enumeration error with joyous thought.</li>
+                    <li>Fix: AI inconsistencies when trying to move around blocking pawns.</li>
+                    <li>Fix: Removed some old back compatibility code that is causing issues with mods.</li>
+                    <li>Fixed several typos.</li>
+                </ul>
             </div>
-            <div class="card">
-                <span class="icon">📶</span>
-                <h3>局域网联机</h3>
-                <p>通过热点或 WiFi 与好友一起联机畅玩，随时随地共享无限欢乐！</p>
-            </div>
-            <div class="card">
-                <span class="icon">✨</span>
-                <h3>光线追踪</h3>
-                <p>基于物理的渲染、逼真的灯光、鲜艳的色彩、真实的水感效果（需GPU支持）。</p>
-            </div>
-            <div class="card">
-                <span class="icon">👪</span>
-                <h3>家长关爱平台</h3>
-                <p>网易未成年人护航平台，为未成年人健康游戏提供科学、专业的护航。</p>
-            </div>
-        </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
 
-        <!-- 方块守护模式 -->
-        <div class="feature-block">
-            <h2>🛡️ 方块守护模式</h2>
-            <p>为呵护未成年人健康，小人家推出方块守护模式，该模式会默认使用方块守护材质包，并针对对抗性玩法进行提醒，限制陌生人社交功能，同时关闭个性化内容推荐及定位信息。</p>
-        </div>
+        <!-- 文章 2: Announcing RimWorld World -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Announcing RimWorld World</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted April 1st, 2026 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <p>Next week, RimWorld World opens to the public! Our brand new theme park has custom rides and attractions modeled after RimWorld gameplay that don't exist ANYWHERE else.</p>
+                <p>➡️ Explore our park map in more detail here: <a href="#">rimworldgame.com/rimworldworld</a></p>
+                <p>Can't wait to see you all there.</p>
+            </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
 
-        <!-- 探索《小人家》 区块 -->
-        <div class="feature-block" style="background: #0f161e;">
-            <h2>⛰️ 探索《小人家》</h2>
-            <p style="font-size:1.05rem; color:#c8d4de;">在这款终极沙盒世界中，建造你能想象的一切奇景，揭示潜藏在暗处的神秘真相，并在漫漫长夜中顽强生存。在《小人家》中，每一次游玩都拥有独一无二的体验，世界的每一个角落都隐藏着让人难忘的冒险。尽情探索这无限世界，一步一个方块，塑造属于你的无垠天地！</p>
-            <div style="margin-top: 20px; font-style: italic; color: #f0c040;">建造庞大的定居点或简朴的土屋。这个世界由你尽情创造！</div>
-        </div>
+        <!-- 文章 3: The winter merch collection is here! ❄️ -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">The winter merch collection is here! ❄️</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted November 27th, 2025 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <h4>Muffalo beanie, RimWorld ornaments, plushes, and returning favourites!</h4>
+                <p>Hey everyone, a holiday trade caravan just arrived! 🎁</p>
+                <p>We've got a fresh RimWorld winter collection as well as beloved items from past drops, so this is your chance to grab something if you missed it last time. Stock is limited and the winter drop leaves the shop on Jan 11.</p>
+                <p>Explore the collection on the official RimWorld merch store: <a href="#">https://rimworld.store/</a></p>
+                <p>Wondering if something will arrive before Christmas? Each item on the website has shipping estimates under "Timeline".</p>
 
-        <!-- 游玩方式 3列 -->
-        <div class="section-title">🎮 游玩方式</div>
-        <div class="grid-3col">
-            <div class="mode-card">
-                <div class="mode-icon">🌲</div>
-                <h4>收集资源</h4>
-                <p style="color:#b0bcc8; margin-top:8px;">在经典旅程中，你往往得先痛击几棵树，收集足够的木材。接下来，你有无限可能：去地下采掘珍稀矿石，或在广袤世界里搜寻珍贵材料。</p>
-            </div>
-            <div class="mode-card">
-                <div class="mode-icon">🌙</div>
-                <h4>挺过漫漫长夜</h4>
-                <p style="color:#b0bcc8; margin-top:8px;">当太阳缓缓坠入地平线，敌对生物便会蜂拥而至。你会选择勇敢直面它们，还是干脆合眼安睡直到黎明？</p>
-            </div>
-            <div class="mode-card">
-                <div class="mode-icon">🏗️</div>
-                <h4>建造令人惊叹的作品</h4>
-                <p style="color:#b0bcc8; margin-top:8px;">从制作工具、搭建简易居所，到在基地中部署精妙的红石装置，一切都由你来掌控。</p>
-            </div>
-        </div>
+                <h4>❄️ RimWorld Winter Collection</h4>
+                <ul>
+                    <li>Muffalo Fur Beanie: A reversible hat to keep you warm, inspired by the muffalo.</li>
+                    <li>Scyther Ornament: All that danger contained in one cute decoration.</li>
+                    <li>Thrumbo Ornament: This noble beast deserves a place high up on your tree.</li>
+                    <li>Boomrat Plush: Handle with care – this tiny friend carries a big spark! And it glows in the dark.</li>
+                    <li>Thrumbo Plush: A rare, soft companion.</li>
+                </ul>
 
-        <!-- 游戏模式：生存 / 创造 对列 -->
-        <div class="section-title">🎯 多种游戏模式</div>
-        <div class="grid-2col">
-            <div class="card" style="border-left: 4px solid #f0c040;">
-                <h3>🔥 生存模式</h3>
-                <p>对于那些胆识过人的冒险者来说，没有什么比击败危险生物、纵览目不暇接的绝美风光，并在生存模式中以自己的方式夺得胜利更能激发热血与激情。</p>
-            </div>
-            <div class="card" style="border-left: 4px solid #6fc3df;">
-                <h3>✈️ 创造模式</h3>
-                <p>无限资源、免疫伤害、还能自由飞翔，这些都能为你的创意插上翅膀，在想象的天空中尽情翱翔。在创造模式中，你的建筑与设计不受任何束缚。</p>
-            </div>
-        </div>
+                <h4>Returning from cryptosleep</h4>
+                <ul>
+                    <li>Bomber Jacket: Our favorite jacket (plus iron-on patches) is back for the season!</li>
+                    <li>Odyssey Tee: Odyssey returns from the stars.</li>
+                    <li>Centipede Plush: For such a heavily-armored murder machine, it's very plump.</li>
+                    <li>Hive Queen Plush: The Queen rises again.</li>
+                    <li>Muffalo Plush: No colony is complete without a Muffalo. Comes with a saddlebag.</li>
+                    <li>Megasloth Plush: A cuddly beast and its bundle of wool.</li>
+                </ul>
 
-        <!-- 与好友一起联机 特色 -->
-        <div class="feature-block" style="border-color: #f0c040;">
-            <h2>🤝 与好友一起联机</h2>
-            <p>与好友协力生存与建造，一同收获无限乐趣。如果你想拥有更专属的冒险天地，还可以通过租赁服打造属于自己的专属服务器，与挚友们共享精彩时光！</p>
-            <div class="flex-row" style="margin-top:20px;">
-                <div class="flex-item"><span style="color:#f0c040;">✔</span> 联机游戏：随时随地与您的好友联机，共享冒险乐趣。</div>
-                <div class="flex-item"><span style="color:#f0c040;">✔</span> 由开发者打造的丰富在线玩法，蕴含无限可能。</div>
-                <div class="flex-item"><span style="color:#f0c040;">✔</span> 使用自己的世界进行联机游戏，支持装载模组。</div>
+                <h4>Black Friday Sales</h4>
+                <p>It's Black Friday on Steam and we're running a bunch of RimWorld sales until Dec 1:</p>
+                <p>That's it for now. Hope you have a wonderful holiday season!<br>– Tia ☃️</p>
             </div>
-        </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
 
-        <!-- 网络游戏 + 我的山头 更详细 -->
-        <div class="grid-2col">
-            <div class="card">
-                <h3>🌍 网络游戏</h3>
-                <p>由专业团队倾力打造的大型多人在线游戏，为您带来高质量的游戏体验。各类玩法一应俱全，无论是角色扮演、亦或是小游戏，你想玩的，这里都有。您可以在这里与多达上千名玩家一同游玩。</p>
+        <!-- 文章 4: Holiday trade caravans are on their way! -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Holiday trade caravans are on their way!</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted November 27th, 2025 by Tia Young</span>
             </div>
-            <div class="card">
-                <h3>🏔️ 我的山头 · 专属服务器</h3>
-                <p>为您与好友打造的专属服务器，即使您不在线，成员也可以随时游玩。告别过去繁琐的开服流程，只需按下几个按钮即可创建您的专属服务器，支持最多40人同时在线。</p>
+            <div class="post-excerpt">
+                <p>🎁Track the RimWorld winter collection, releasing Nov 27: <a href="#">https://rimworld.store/</a></p>
             </div>
-        </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
 
-        <!-- 游戏特色（合规信息） -->
-        <div class="feature-block" style="background: #0d141c; font-size: 0.9rem; color: #8a9aa8;">
-            <h3 style="color:#f0c040;">📋 游戏特色与健康提示</h3>
-            <p>1. 本游戏是一款3D沙盒游戏，适用于年满8周岁及以上的用户，建议未成年人在家长监护下使用。家长可以登录“网易家长关爱平台”进行设置。</p>
-            <p>2. 玩家在游戏内可以与世界、生物、物品交互，探索随机生成的世界，根据自己的想法建造建筑。可以独自游玩，也可以通过文字、语音与其他玩家沟通。</p>
-            <p>3. 本游戏中有用户实名认证系统，未实名账号不能登录。认证为未成年人的用户将接受以下管理：未满8周岁的用户不能付费；8周岁以上未满16周岁，单次充值不得超过50元，每月累计不得超过200元；16周岁以上未成年人，单次充值不得超过100元，每月累计不得超过400元。未成年玩家可在周五、周六、周日和法定节假日每日晚20时至21时登录游戏。</p>
-            <p>4. 本游戏以自由创造为主题，不仅培养玩家创造力与想象力，也是面向青少年进行历史文化推广、知识科普的互动载体。</p>
-        </div>
+        <!-- 文章 5: Update 1.6.4630 released -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Update 1.6.4630 released</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted October 31st, 2025 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <p>BOO! Happy Halloween! 🎃💀</p>
+                <p>On this spooky day, we've got a small RimWorld update loaded with fixes. They're listed below in the changelog.</p>
+                <p>This update should be compatible with all savegames and mods.</p>
+                <p>Have a bug to report? You can share it with us on the official RimWorld development Discord.</p>
+                <p>OoOoOoo,<br>Tia 👻</p>
 
-        <!-- 页脚 -->
-        <footer class="footer">
-            <p>© 2026 小人家官网 · 全新视界 探索无限</p>
-            <p style="margin-top: 8px;">
-                <a href="#">隐私政策</a> · <a href="#">家长关爱平台</a> · <a href="#">用户协议</a>
-            </p>
-            <p style="margin-top: 8px; color: #4a5a68;">推荐使用竖屏浏览 ~</p>
-        </footer>
-    </div>
+                <h4>Fixes</h4>
+                <ul>
+                    <li>Fix: Optimisation to JobGiver_BoardOrLeaveGravship.</li>
+                    <li>Fix: Animals can't fish on ocean water in some circumstances.</li>
+                    <li>Fix: Shuttles arriving to pick up a pawn on a pocket map will now land on the parent map instead.</li>
+                    <li>Fix: Grav engine floating orb graphic cut off at the top.</li>
+                    <li>Fix: Void structures could end up with negative progress.</li>
+                    <li>Fix: Shuttle leaving if all pawns on map enter a pocket map.</li>
+                    <li>Fix: Pawns sometimes wandering to (0, 0), especially with fleshmass hearts.</li>
+                    <li>Fix: Void provocation fails silently on maps which can't support harbinger trees.</li>
+                    <li>Fix: Void provocation wasn't bypassing earliest day requirements for incidents.</li>
+                    <li>Fix: Incorrect label on ghoul/shambler discovery.</li>
+                    <li>Fix: Error in GameComponent_PawnDuplicator when running without Anomaly.</li>
+                    <li>Fix: LanguageWorker_Italian missing a null check in WithIndefiniteArticle method.</li>
+                    <li>Fix: Techprints in loot (e.g. ancient danger) don't respect techprint commonality.</li>
+                    <li>Fix: Possible error if a ritual spot is deleted while a ritual is in progress.</li>
+                    <li>Fix: Gravship launch ritual not added retroactively to saves.</li>
+                    <li>Fix: Ghouls couldn't right-click-use serums, and mechs could erroneously use them via the gizmo.</li>
+                    <li>Fix: Metalhorror fifth timer not respecting VTR, causing gray flesh to take much longer to spawn.</li>
+                    <li>Fix: Error attempting to generate creepjoiner relations.</li>
+                    <li>Fix: Z-Clipping with some world object textures.</li>
+                    <li>Fix: Raided thought not getting applied in some quests.</li>
+                    <li>Fix: Gravcore quest sites were not settleable (not retroactive).</li>
+                    <li>Fix: Maps weren't considered a player home if a gravship landed on it after it had already generated.</li>
+                    <li>Fix: Several issues with transporting fleshmass hearts on gravships.</li>
+                    <li>Fix: Infant illness doesn't change phases due to an oversight.</li>
+                    <li>Fix: Labyrinth teleporting targets to non-origin maps if origin Obelisk was destroyed.</li>
+                    <li>Fix: Pawns getting stuck when running while on fire if blocked by an enemy.</li>
+                    <li>Fix: Seeds not always being deterministic.</li>
+                    <li>Fix: Pawn apparel using map biome vacuum flag rather than planet layer flag.</li>
+                    <li>Fix: Removing world layers not removing connections or destroying world objects.</li>
+                    <li>Fix: Shuttles sometimes landing out of bounds.</li>
+                    <li>Fix: Wasp stuns no longer affect mechs or turrets.</li>
+                    <li>Fix: Pawns could plant special seeds outside their allowed area.</li>
+                    <li>Fix: Faction goodwill was not affected by killing pawn via psychic slaughter.</li>
+                    <li>Fix: Performance issue when selecting a lot of beds on a late game map.</li>
+                    <li>Fix: Prisoner and non prisoner beds can get mixed up when loading save if rooms are separated by paste dispensers.</li>
+                    <li>Fix: Errored ship jobs now clean themselves up properly.</li>
+                    <li>Fix: Turret top offset is (erroneously) rotated by turret angle.</li>
+                    <li>Fix: Bills on launch map get set to drop on floor when gravship leaves.</li>
+                    <li>Fix: Some explosive buildings explode twice when the wick ends.</li>
+                    <li>Fix: Shuttles could disappear when landing if their contents were bugged.</li>
+                    <li>Fix: Missing null check in DirectXmlCrossRefLoader.</li>
+                    <li>Updated player creative content.</li>
+                </ul>
+            </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
+
+        <!-- 文章 6: Bring home a thrumbo and boomalope! -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Bring home a thrumbo and boomalope!</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted October 10th, 2025 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <p>Hello everyone, our new RimWorld thrumbo figure and boomalope night light are now available on YouTooz: <a href="#">https://youtooz.com/collections/rimworld</a></p>
+                <p>It's a limited edition campaign, so get yours before it ends.</p>
+                <ul>
+                    <li>Thrumbo figure: The regal thrumbo in a 4.9" flocked form for your desk. No taming required.</li>
+                    <li>Boomalope night light: Recharge beside this slumbering boomalope and let its gentle glow light your nights.</li>
+                </ul>
+                <p>We also have a Steam sale going on for RimWorld and several expansions until Oct 24 to celebrate the game's upcoming 12th birthday! 🎉</p>
+                <p>Hope you're having a great week!<br>– Tia and the Ludeon team</p>
+                <p>A thrumbo at your side and a boomalope to light up the night. 🤍🌙</p>
+                <p>Coming to YouTooz on October 10th.</p>
+            </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
+
+        <!-- 文章 7: Update 1.6.4566 improves gravships, shuttles, and more -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Update 1.6.4566 improves gravships, shuttles, and more</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted August 28th, 2025 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <h4>Quality-of-life changes for gravships and shuttles, new snowy art, and mechanoid bosses in spaaaaaace!</h4>
+                <p>Hello everyone, we've got a content update for RimWorld today!</p>
+                <p>Gravships have received some quality-of-life changes.</p>
+                <ul>
+                    <li>The new gravship launch interface lets you get your colony's animals and mechanoids onboard, and kicks visitors out. This makes takeoffs feel better and prevents accidental kidnappings.</li>
+                    <li>The pilot console now has a "view range" tool that shows your gravship's range without going through the whole launch process</li>
+                </ul>
+                <ul>
+                    <li>Shuttles can now safely land on items, and they no longer obliterate a ton of roof when landing inside buildings – only the necessary roof.</li>
+                    <li>When you're in orbit, colonists won't automatically take off their life-saving, vacuum-resistant apparel if they're in a dangerous vacuum.</li>
+                    <li>Mechanitors can summon the mechanoid bosses… in spaaaace!</li>
+                    <li>We added a new vacskin gland prosthetic from the Empire that protects your colonists against vacuum. (This cross-expansion content only appears for those with Odyssey and Royalty).</li>
+                    <li>We rebalanced the starjack xenotype to make them more useful in space – they have a new low gravity adapted gene which makes them faster and better workers while in orbit.</li>
+                </ul>
+                <p>Other improvements include a new category for fishing in the work tab, tree sowing research allows you to grow timbershrooms in the glowforest, and the sentience catalyst now stops farm animals from roaming away.</p>
+                <p>And just in time for the colder seasons, there are new snowy visuals for trees and some plants!</p>
+                <p>We've also made several technical improvements to the game. We reduced the generation and loading times for worlds with 100% coverage, as well as added some tools to help our modders.</p>
+                <p>This update should be compatible with all savegames and mods. The full changelog is below to browse.</p>
+                <p>If you need to report a bug, or you're having a problem while playing, please join us on the official RimWorld development Discord.</p>
+                <p>Have fun out there!<br>– Tia</p>
+
+                <h4>Changelog</h4>
+                <ul>
+                    <li>Added new options to the gravship launch window to easily get colony animals and mechanoids onboard before launching, as well as to remove neutral pawns off the gravship.</li>
+                    <li>Added a "view range" option to the pilot console which lets you quickly see the range of your gravship.</li>
+                    <li>Added snowy visuals for trees and some plants when they're in a sufficiently snowy area.</li>
+                    <li>Added the vacskin gland prosthetic which protects against vacuum. Requires the Odyssey and Royalty expansion.</li>
+                    <li>Added a "low gravity adapted" gene to the starjack xenotype, as well as rebalanced the starjacks genes. Requires Odyssey and Biotech expansion.</li>
+                    <li>Bridges built in space now have unique art for their borders.</li>
+                </ul>
+
+                <h4>Improvements & Balance Changes</h4>
+                <ul>
+                    <li>Fishing now has its own category in the work tab.</li>
+                    <li>Pursuing mechanoids in the gravship scenario now arrive in two massive raids per gravship map and then stop.</li>
+                    <li>The final mechhive raid will now be 50% stronger.</li>
+                    <li>Improved rewards for destroying the mechhive. You now gain +50 reputation with all factions, and the colonist that destroyed the mechhive gains a larger and longer-lasting positive moodlet.</li>
+                    <li>Mechanitors can now summon mechanoid bosses while in space.</li>
+                    <li>Insect lair entrances are now collapsable.</li>
+                    <li>Added the ability to sow timbershrooms in glowforests with tree sowing research.</li>
+                    <li>Shuttles are no longer blocked from landing on items.</li>
+                    <li>Passenger shuttles no longer destroy more roof than they need to when landing.</li>
+                    <li>Allow quests to retarget themselves to suitable maps if they generate targeting an unsuitable one. In orbit, this allows you to accept quests that don't work in space by flying down to the planet.</li>
+                    <li>Gravships no longer clear pollution when landing.</li>
+                    <li>Sentience catalyst now removes roaming and fence-blocked status from animals.</li>
+                    <li>The gravship scenario now requires you to start with at least one colonist capable of intellectual work. This prevents you from becoming immediately stranded.</li>
+                    <li>Worshipful village raids now occur every 24 hours and are smaller in size.</li>
+                    <li>Gravships can once again land at worshipful villages.</li>
+                    <li>Having a gravship on a temporary map will prevent the map from closing if all colonists are dead or gone.</li>
+                    <li>Pawns won't automatically remove their vacuum-resistant apparel if they're in a dangerous vacuum.</li>
+                    <li>Planning designator shows map boundary outline in space.</li>
+                    <li>Increased perceived path cost of shallow lava to discourage dangerous pathing.</li>
+                    <li>More pawns from the Royalty and Ideology expansions can now spawn as starjacks.</li>
+                    <li>Hermit crabs no longer walk sideways. They also live considerably longer.</li>
+                    <li>Raiders won't try to ignite buildings when they are in a vacuum.</li>
+                    <li>Bestowing ceremony can now be accepted in space.</li>
+                    <li>Removed forced low-power mode for vac barriers when they're not in space, allowing them to still function while on the planet.</li>
+                    <li>Prevented meteors from landing directly on top of grav anchors.</li>
+                    <li>Added info on the grav anchor to the gravship launch confirmation.</li>
+                    <li>Improved credits layout to reduce the vertical size.</li>
+                    <li>Archean trees now self-heal like other special trees.</li>
+                    <li>Updated links in the main menu.</li>
+                    <li>Added confirmation if reforming caravan would cause your gravship to be lost.</li>
+                    <li>Landing a gravship on polluted terrain now slowly fades the pollution visuals in.</li>
+                    <li>Updated creative content rewards.</li>
+                </ul>
+
+                <h4>Performance</h4>
+                <ul>
+                    <li>Reduce time required to load a 100% world save file.</li>
+                    <li>Reduce time to generate a 100% world by about 40%.</li>
+                    <li>Added the ability for mods to load textures from DDS files, which should load significantly faster than PNG files and potentially at higher quality.</li>
+                    <li>Added custom atlas packing implementation which should allow the game to start slightly faster, while using less memory.</li>
+                    <li>Improve performance when hovering a world tile out of gravship range.</li>
+                </ul>
+
+                <h4>Technical & Modding</h4>
+                <ul>
+                    <li>Unify all MayRequire and IfModActive checks to strip suffixes, trim, and lower-case package IDs</li>
+                    <li>Improved the moddability of animal abilities. It is now easier for modders to add abilities to player animals without using the Special Trainables system. Additionally, adding multiple abilities through Special Trainables is now supported.</li>
+                    <li>Increased max radius of GenRadial to 80 and optimize radius calculations.</li>
+                    <li>We now run back-compat code if the active mod list has changed, so that when adding expansions, all needed data is added to objects.</li>
+                    <li>Fix: plant.wildBiomes wasn't checking for duplicate entries in biomes. (Only affects mods.)</li>
+                    <li>Fix: Modded things with non-North default rotations not being placed correctly on gravships and prefabs</li>
+                </ul>
+
+                <h4>Fixes</h4>
+                <ul>
+                    <li>Fix: Traders guild faction no longer mentions giving gifts in their hostility letter.</li>
+                    <li>Fix: Outfit stands are once again minifiable and correctly drop their inventory contents when deconstructed while minified.</li>
+                    <li>Fix: Can't sell weapons held in outfit stands.</li>
+                    <li>Fix: Pawns using the incorrect seat on couches when socially relaxing.</li>
+                    <li>Fix: Properly fail strange signal quest if player loses their home map.</li>
+                    <li>Fix: Animals not checking reservations on fishing cells.</li>
+                    <li>Fix: Animals able to fish through foundations.</li>
+                    <li>Fix: Unable to remove pawns from being the target on certain psychic rituals.</li>
+                    <li>Fix: Freeze or crash on boot for players with specific AMD integrated GPUs.</li>
+                    <li>Fix: Out of bounds error trying to determine shuttle landing position when few options are possible.</li>
+                    <li>Fix: Combat log occasionally mentions flesh-related injuries for mechanoids.</li>
+                    <li>Fix: Shuttle load list getting reset after launching.</li>
+                    <li>Fix: Lava emergence could go through walls in specific situations.</li>
+                    <li>Fix: Pawns not getting comfort from chairs while fishing.</li>
+                    <li>Fix: Paralytic arrows weapon trait not working if Anomaly is not active.</li>
+                    <li>Fix: Paramedics dropping their carried pawn when jumping.</li>
+                    <li>Fix: Raiders pathing directly through doors to trash newly blocked things.</li>
+                    <li>Fix: Loot on settlements spawning in inaccessible locations.</li>
+                    <li>Fix: Vac barriers not exchanging temperatures properly when off.</li>
+                    <li>Fix: Disabling mining via scenario not disabling vein mining.</li>
+                    <li>Fix: Incorrect description on burst shot count stat.</li>
+                    <li>Fix: Corpses spawning in some occupied settlement room types.</li>
+                    <li>Fix: Metalhorror filth not spawning if previous map was abandoned with specific timing..</li>
+                    <li>Fix: Update peafowl labels to distinguish between male peacocks and female peahens</li>
+                    <li>Fix: Clarify attack target description.</li>
+                    <li>Fix: Game not switching to appropriate map when gravship cutscene happens.</li>
+                    <li>Fix: GenDraw.WorldRadiusRing issue with ShipJob_Wait.</li>
+                    <li>Fix: Certain sites not receiving incidents when landed at via gravship.</li>
+                    <li>Fix: Mining charges yielding only one mineable resource per tile.</li>
+                    <li>Fix: Space world objects not showing the orbital ITab.</li>
+                    <li>Fix: Basic gravtech appearing in schematics.</li>
+                    <li>Fix: Out of bounds error when launching gravship.</li>
+                    <li>Fix: Pursuing mechanoids scenario part now handles gravship anchors better.</li>
+                    <li>Fix: Lag when imperial shuttle is on map with lots of haulables.</li>
+                    <li>Fix: Bad temperatures preventing gravship launch.</li>
+                    <li>Fix: Bestowing ceremony couldn't be started if recipient has no free cells around them.</li>
+                    <li>Fix: Error when baby being breastfed dies.</li>
+                    <li>Fix: Autocut in pens sometimes including plants that are the same nutrition as grass.</li>
+                    <li>Fix: Incorrect venerated animal message when no colonists capable of hunting.</li>
+                    <li>Fix: Mechhive now spawns a border of platforms around buildings to prevent inaccessible areas.</li>
+                    <li>Fix: Mech booster rendering behind other buildings.</li>
+                    <li>Fix: Shuttle in hospitality quests not arriving on map of required pawns (fix not retroactive)</li>
+                    <li>Fix: Some apparel being incorrectly set to medieval tech level.</li>
+                    <li>Fix: Lectern north and south graphics were swapped.</li>
+                    <li>Fix: Genes in gene bank not being repaired.</li>
+                    <li>Fix: Pawns with no food type or need being able to be told to eat something from their inventory because it's considered a drug.</li>
+                    <li>Fix: Cloudwatching in space now always says stargazing.</li>
+                    <li>Fix: Several quest sites that were previously not able to be settled are now settleable after clearing all active threats.</li>
+                    <li>Fix: Labyrinths returning pawns to a different map than the one they were on.</li>
+                    <li>Fix: Wall blueprints not getting removed when attached wall blueprint is removed.</li>
+                    <li>Fix: 1 in 5000 chance for error when generating map during gameplay (e.g. ancient stockpile).</li>
+                    <li>Fix: Error if cached throne becomes despawned.</li>
+                    <li>Fix: Several issues with shuttle and transport pod range calculations.</li>
+                    <li>Fix: Concurrent thread modification exception when accessing map pawns.</li>
+                    <li>Fix: Confusing UI/messages when trying to use mortars in blind fog.</li>
+                    <li>Fix: Unique sniper rifles with high range not showing range.</li>
+                    <li>Fix: Error trying to move onto a layer with no valid settlement locations.</li>
+                    <li>Fix: No fuel information given when targeting player settlements during gravship launch.</li>
+                    <li>Fix: War queen resets to full steel when changing map.</li>
+                    <li>Fix: Improve gravship placement logic on mechhives.</li>
+                    <li>Fix: Incorrect apparel mentioned in thought for wearing ideo wanted apparel.</li>
+                    <li>Fix: Error with bandit camp pawn lend quest with multiple maps.</li>
+                    <li>Fix: Ideo buildings have incorrect names unless regenerated manually.</li>
+                    <li>Fix: Adjust archean tree shadow.</li>
+                    <li>Fix: Statues weren't saving style of apparel (fix not retroactive).</li>
+                    <li>Fix: UI icons for ores weren't rendering correctly (e.g. in search).</li>
+                    <li>Fix: Certain quests in saves converted from 1.5 were instantly expiring.</li>
+                    <li>Fix: Space settlement cannon connections were replacing interior terrain.</li>
+                    <li>Fix: Archonexus quests in space were using incorrect world object for new faction settlements.</li>
+                    <li>Fix: Small differences in move speed weren't being reflected accurately over long distances.</li>
+                    <li>Fix: Drop pod raids were failing to execute in space with low threat point values.</li>
+                    <li>Fix: Colony animals were choosing to nuzzle friendly shamblers & ghouls.</li>
+                    <li>Fix: Collection modified error when starting gravship launch while animal is rescuing a colonist.</li>
+                    <li>Fix: Things carried by lifters & animals are now counted for the purposes of bills.</li>
+                    <li>Fix: Incorrect entries in empire town names.</li>
+                    <li>Fix: Mechhive quest was taking a long time to refire after failing it.</li>
+                    <li>Fix: Allow roof punching if pursuing mechanoids can't find any non-roofed cells.</li>
+                    <li>Fix: Duplicate gravship wreckages were able to fire if you wait long enough without a grav engine.</li>
+                    <li>Fix: Biosculpter pods weren't curing scaria infections.</li>
+                    <li>Fix: Animals were attempting to fish at 0, 0 if every water cell on the map is frozen.</li>
+                    <li>Fix: Was possible for shuttles to get lost in specific set ups when merging two caravans.</li>
+                    <li>Fix: Was possible to toggle auto-refuel on refuelables that don't allow it, via hotkey.</li>
+                    <li>Fix: Gravships weren't able to land on outposts.</li>
+                    <li>Fix: Error generating trade request quests in space.</li>
+                    <li>Fix: Smoke launcher, EMP launcher, and toxbomb launcher were incorrectly marked as incendiary weapons.</li>
+                    <li>Fix: Animals with 0% wildness were requiring level 1 handling skill.</li>
+                    <li>Fix: Incorrect plant weights on maps with limited fertile terrain.</li>
+                    <li>Fix: Several gravtech and mechtech researches could still appear in schematics.</li>
+                    <li>Fix: Quest lords were being added to incorrect maps in some circumstances</li>
+                    <li>Fix: Typo in mastodon description.</li>
+                    <li>Fix: Player shuttle could be lost if settling/camping on map with not much land.</li>
+                    <li>Fix: Incorrect inspect string on thruster if it's broken down.</li>
+                    <li>Fix: Grav engine was rendering behind some buildings north of it.</li>
+                    <li>Fix: Mech relay was rendering behind buildings north of it.</li>
+                    <li>Fix: In some cases, mechs were trying to do all work types.</li>
+                    <li>Fix: Error from bugged zones when landing ship.</li>
+                    <li>Fix: "Vegetarian disliked" precepts descriptions are now more accurate.</li>
+                </ul>
+            </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
+
+        <!-- 文章 8: Update 1.6.4543 released -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Update 1.6.4543 released</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted August 6th, 2025 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <p>Hi everyone, we just released a small update for RimWorld.</p>
+                <p>Have you reached Odyssey's ending? There's now a new epic song that plays! We also fixed an issue where quest shuttles attempted to land on water, which caused them to teleport into your buildings.</p>
+                <p>This update should be compatible with all savegames and mods.</p>
+                <p>If you need to report a bug, or you're having a problem while playing, please join us on the official RimWorld development Discord.</p>
+                <p>Bye for now,<br>– Tia</p>
+
+                <h4>Changelog</h4>
+                <ul>
+                    <li>Changed Odyssey's end credits music to use the correct track.</li>
+                    <li>Changed music track "Impermanent Waves" to be a non-combat song on the planet and in-orbit.</li>
+                    <li>Quest shuttles no longer attempt to land on water, which was causing issues where they would warp into your base and destroy your buildings.</li>
+                    <li>Allowed the trader's guild faction to generate more variety in their ideoligion.</li>
+                    <li>Pawns now move more rapidly when pathing to water in order to go swimming.</li>
+                    <li>Archean trees no longer terraform ice.</li>
+                    <li>Dormant mechs no longer block pawn paths.</li>
+                    <li>Gravship facilities on invalid substructure are no longer considered connected.</li>
+                    <li>The game will now attempt to clean up invalid scenario parts when loading a save.</li>
+                    <li>Improve translatability of orbital trader names.</li>
+                    <li>Updated the French language worker.</li>
+                </ul>
+
+                <h4>Fixes</h4>
+                <ul>
+                    <li>Fix: Royalty shuttles were able to land on unsuitable terrain, potentially losing their contents.</li>
+                    <li>Fix: Psychic drones/soothes not affecting space maps.</li>
+                    <li>Fix: Sounds in mods failing to load on Linux if there's a space in the file path.</li>
+                    <li>Fix: Inability to search for items on corpses.</li>
+                    <li>Fix: Certain wardening workgivers (take to bed, execute, interrogate, etc.) couldn't be prioritized when the prisoner/slave was already reserved.</li>
+                    <li>Fix: "Can't accept this quest in orbit" preventing accepting joiner from ideology ritual done on planet surface, if there is an orbit map.</li>
+                    <li>Fix: Vacuum resistance stat not being cached, causing significant performance issues with lots of blueprints on the map.</li>
+                    <li>Fix: Gravship wreckage quest not being allowed to generate after archonexus if using gravship scenario.</li>
+                    <li>Fix: Error when launching with mech cluster building on ship.</li>
+                    <li>Fix: Torrential rain flooding through bridges.</li>
+                    <li>Fix: Vacuum overlay not updating after gravship takeoff.</li>
+                    <li>Fix: Scribe_References unable to save reference to the World, breaks incident queue for incidents targeting world.</li>
+                    <li>Fix: Incorrect lerping in HitFactorFromShooter.</li>
+                    <li>Fix: GraphicData copy method doesn't copy cornerOverlayPath, throwing an error if used for a building which can be player-constructed.</li>
+                    <li>Fix: Orbital scanner north and south sprites swapped.</li>
+                    <li>Fix: White fringing on unique weapons.</li>
+                    <li>Fix: RangedWeapon_WarmupMultiplier stat not actually being applied.</li>
+                    <li>Fix: Pawns that are immune to rot stink still get the moodlet for exposure to it.</li>
+                    <li>Fix: Confusing letter for left-behind world pawn giving birth.</li>
+                    <li>Fix: "Meme shipborn is not allowed" when trying to load a saved ideology into the traders guild faction's ideoligion.</li>
+                    <li>Fix: Rottables rot in settlement trade inventory.</li>
+                    <li>Fix: Pawns are deleted if dryads are taken on gravship without their gauranlen tree.</li>
+                    <li>Fix: Several apparel packs (cerebrex node, turret packs, etc.) were not allowed to be taken during the archonexus restart.</li>
+                </ul>
+            </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
+
+        <!-- 文章 9: Update 1.6.4535 released -->
+        <article class="post-item">
+            <h2 class="post-title"><a href="#">Update 1.6.4535 released</a></h2>
+            <div class="post-meta">
+                <span class="author">Posted July 29th, 2025 by Tia Young</span>
+            </div>
+            <div class="post-excerpt">
+                <p>Hello, we're back with another update for RimWorld! If you need to report a bug, or you're having a problem while playing, please join us on the official RimWorld development Discord.</p>
+                <p>Today's update fixes several issues people were experiencing with Odyssey. This includes multiple corner problems where buildings through corners affected room roles, beds could become prisoner beds through corners, and enemies could set fire to your stuff through corners. It also fixes diagonal walls leaking room vacuum under certain circumstances, issues with player shuttles being lost to water, as well as gravship launches causing your electrical connections to scramble.</p>
+                <p>We're also aware of a bug where quest shuttles incorrectly try to land on water, potentially causing them to warp into your buildings. We're working on a solution – a fix for it is currently available on the Steam unstable beta branch!</p>
+                <p>This update should be compatible with all savegames and mods.</p>
+                <p>And if you're enjoying Odyssey, consider leaving a review on Steam! Expansions don't get a ton of reviews, and every one helps us out a lot.</p>
+                <p>Have a great week,<br>– Tia</p>
+
+                <h4>Changelog</h4>
+                <ul>
+                    <li>Made crater descriptions more generic.</li>
+                    <li>Clarified the orbital scanner description.</li>
+                    <li>Clarified the gravcore description.</li>
+                    <li>Made ritual text more generic to fit more situations.</li>
+                    <li>Added flooring to subroom prefabs on orbital platforms.</li>
+                    <li>Reduced the chance of the gravship landing spot being over deep water.</li>
+                    <li>Gravcores are no longer asked for in trade request quests.</li>
+                    <li>Reduced psilocap catatonic breakdown chance from 4% to 1% and psilocap creative inspiration chance from 6% to 2%.</li>
+                    <li>Made the breathless gene suppress the normal vacuum resistant gene, removing its metabolic impact.</li>
+                    <li>Prevented hospitality quests from being acceptable in space due to it causing various bugs.</li>
+                    <li>Removed unnecessary PawnRenderNode_Apparel cast in Apparel dynamic setup for modders</li>
+                    <li>Prevented traps spawning next to exterior doors.</li>
+                    <li>Prevented outfit stands from being uninstalled because they destroy their inventory if deconstructed while minified.</li>
+                    <li>Updated some player names per request.</li>
+                </ul>
+
+                <h4>Fixes</h4>
+                <ul>
+                    <li>Fix: Corner punching turrets, buildings through corners affecting room roles, beds becoming prisoner beds through corners, and enemies setting fire to buildings through corners.</li>
+                    <li>Fix: Flickables are reset to be powered on when gravship launches.</li>
+                    <li>Fix: Power connections are scrambled on gravship launch.</li>
+                    <li>Fix: Diagonal walls could incorrectly leak room vacuum.</li>
+                    <li>Fix: Issues with shuttle crash quest after moving maps.</li>
+                    <li>Fix: Player shuttles could be lost in water when landing.</li>
+                    <li>Fix: Issues with nomadic precept not saving/loading properly (resetting to poor mood on load).</li>
+                    <li>Fix: Mechanoid signal quest sometimes didn't drop the grav engine.</li>
+                    <li>Fix: Areas previously occupied by gravship weren't being updated by the pathfinder, so pawns would appear to walk over empty space.</li>
+                    <li>Fix: Cannot fill in Odyssey craters without Anomaly enabled.</li>
+                    <li>Fix: Could place the gravship hull off of substructure.</li>
+                    <li>Fix: Roof overlay not updated after gravship leaves grav anchored map.</li>
+                    <li>Fix: Roof zones are left on map after gravships leave.</li>
+                    <li>Fix: Lava emergence causing freezes in very specific circumstances.</li>
+                    <li>Fix: Reduced the possibility of getting a double grav engine.</li>
+                    <li>Fix: Draw styles were using area instead of selected cell number.</li>
+                    <li>Fix: VTR issues with frenzy field and sleep suppression.</li>
+                    <li>Fix: Gravship overlapping prison cell for "prisoner willing to join" quest.</li>
+                    <li>Fix: Pawns standing on the same cell as another building (most commonly doors) can take friendly fire when within safe range.</li>
+                    <li>Fix: Issues with age reversal demand time not being set correctly from chronophagy, and reset on save/load.</li>
+                    <li>Fix: Wolverine wasn't configured to be a predator despite having prey size.</li>
+                    <li>Fix: Orbit layer not using correct world size if loaded into an existing 1.6 save.</li>
+                    <li>Fix: Strange signal quest disappearing if target map is destroyed.</li>
+                    <li>Fix: Pawns won't fish if the closest water body to them has no fishable cells.</li>
+                    <li>Fix: Error in PawnsAvailable quest part after switching maps.</li>
+                    <li>Fix: Improve fallback for spawning shuttle on map from caravan.</li>
+                    <li>Fix: Shuttles now properly apply peace talk outcomes on landing.</li>
+                    <li>Fix: Issues with using gravship scenario ScenParts outside of odyssey scenario.</li>
+                    <li>Fix: Cypress tree being destroyed by floodwater, unlike all other trees.</li>
+                    <li>Fix: Archonexus reset does not reset grav engine inspected status (prevents the gravship quest from being obtained again, so no gravcores can be obtained).</li>
+                    <li>Fix: Slow startup performance (InitializeShortHashDictionary) with lots of modded content.</li>
+                    <li>Fix: Ancient mechanitor complex can fail to generate on a map where it should be able to fit.</li>
+                    <li>Fix: Map gen exception and broken UI if ancient reactor fails to find a place to spawn, adjust order so they fail to find a place less often.</li>
+                    <li>Fix: Training decay time not taking into account sentience-catalyst-adjusted wildness.</li>
+                    <li>Fix: Alligator eggs hatching into sea turtles.</li>
+                    <li>Fix: Quest pawn arrival could break in space.</li>
+                    <li>Fix: UI cascade error when pawn targeted with skip dies.</li>
+                    <li>Fix: Tended goodwill being reset if the pawn is downed again after being tended.</li>
+                    <li>Fix: Gases on gravship never dissipate after landing.</li>
+                    <li>Fix: Error when accepting bestower quest.</li>
+                    <li>Fix: Incorrect index calculations in river flow code.</li>
+                    <li>Fix: Loading non-Biotech save with Biotech enabled creates record-related errors.</li>
+                    <li>Fix: Abandoning a map with an ancient exostrider on it doesn't count as abandoning your chance to get a mechanitor, so the complex never generates.</li>
+                    <li>Fix: Player not considered to have a grav engine while gravship in flight.</li>
+                    <li>Fix: Linux build didn't inherit launch arguments configured in Steam.</li>
+                    <li>Fix: Apparel setup was not passing parent tag def into render node.</li>
+                    <li>Fix: Enemies in Odyssey structures will now respond better to colonists being unreachable.</li>
+                    <li>Fix: Pawns with ranged weapons missing melee attack float menu option when in melee range.</li>
+                    <li>Fix: Statue doesn't visually update until save/reload if you use transmute steel on it.</li>
+                    <li>Fix: Error when slave rebellion tries to trigger while slave is in gene extractor.</li>
+                    <li>Fix: Strange signal quest was acceptable in space.</li>
+                    <li>Fix: Unnatural healing/healer serum removing sentience catalyst.</li>
+                    <li>Fix: Sentience catalyst can target wild people.</li>
+                    <li>Fix: Apocriton doesn't have parts for heavy shield apparel.</li>
+                    <li>Fix: Incorrect message when trying to set prisoner as pilot.</li>
+                    <li>Fix: Typo in plant grove description.</li>
+                    <li>Fix: Typo in mechhive location description.</li>
+                    <li>Fix: Typo in lava snail description.</li>
+                    <li>Fix: Various typos.</li>
+                </ul>
+            </div>
+            <a href="#" class="read-more">阅读全文 →</a>
+        </article>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <span>© 2026 <span class="highlight">deepfeel</span> studio. All rights reserved.</span>
+        <span>
+            <a href="#">隐私政策</a> ·
+            <a href="#">用户协议</a> ·
+            <a href="#">联系支持</a>
+        </span>
+    </footer>
+</div>
 </body>
 </html>
